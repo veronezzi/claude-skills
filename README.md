@@ -8,7 +8,8 @@ Mantido por **Guilherme** ([@SEU_USUARIO](https://github.com/SEU_USUARIO)).
 
 | Skill | O que faz |
 |---|---|
-| _(nenhuma ainda — ver `prompts/`)_ | |
+| [`loltracker-conventions`](skills/loltracker-conventions/) | Convenções e limites pedagógicos do rift-tracker: proíbe Jetpack Compose e impede o Claude de implementar features pelo Pedro |
+| [`minimalist-monochrome-design`](skills/minimalist-monochrome-design/) | Integra o design system Minimalist Monochrome (preto e branco, tipografia serifada oversized, zero border-radius) em projetos frontend web |
 
 ## Prompts
 
