@@ -9,7 +9,7 @@ Mantido por **Guilherme** ([@SEU_USUARIO](https://github.com/SEU_USUARIO)).
 | Skill | O que faz |
 |---|---|
 | [`loltracker-conventions`](skills/loltracker-conventions/) | Convenções e limites pedagógicos do rift-tracker: proíbe Jetpack Compose e impede o Claude de implementar features pelo Pedro |
-| [`design-systems`](skills/design-systems/) | Coleção de sistemas de design pra frontend web: Minimalist Monochrome (preto e branco, tipografia serifada oversized) e Apple Design (motion fluido, gestos, materiais translúcidos) |
+| [`apple-design`](skills/apple-design/) | Abordagem da Apple pra motion fluido e design de interface (gestos, springs, materiais translúcidos, tipografia), traduzida pra web — importado de [emilkowalski/skills](https://github.com/emilkowalski/skills/blob/main/skills/apple-design/SKILL.md) |
 
 ## Prompts
 
