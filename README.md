@@ -7,6 +7,7 @@ Mantido por **Guilherme** ([@veronezzi](https://github.com/veronezzi)).
 ## Índice
 
 - [Skills](#skills)
+- [Commands](#commands)
 - [Agents](#agents)
 - [Prompts](#prompts)
 - [Anatomia de uma skill](#anatomia-de-uma-skill)
@@ -24,7 +25,8 @@ Mantido por **Guilherme** ([@veronezzi](https://github.com/veronezzi)).
 ### Exemplo: `orchestrator-loop`
 
 Pra forçar o modo de retry até passar (em vez de depender de palavra-chave
-no meio do pedido), passe `orchestrator-loop` como primeiro argumento:
+no meio do pedido), passe `orchestrator-loop` como primeiro argumento, ou
+use o atalho `/orchestrator-loop` (ver [Commands](#commands) abaixo):
 
 ```
 /orchestrator orchestrator-loop corrige o build até o ./gradlew assembleDebug passar
@@ -34,6 +36,16 @@ O orchestrator pergunta o critério de sucesso se não estiver claro, avisa o
 teto de tentativas (padrão 5 por etapa) antes de começar, e para sozinho se
 o mesmo erro se repetir duas vezes seguidas, em vez de insistir às cegas.
 Detalhes completos em [`skills/orchestrator/SKILL.md`](skills/orchestrator/SKILL.md#loop-até-funcionar-retry-até-passar).
+
+## Commands
+
+`commands/` guarda slash commands do Claude Code (`.claude/commands/*.md`):
+atalhos que injetam um prompt fixo antes de rodar, sem precisar de uma
+skill inteira pra isso.
+
+| Command | O que faz |
+|---|---|
+| [`orchestrator-loop`](commands/orchestrator-loop.md) | `/orchestrator-loop <pedido>`, atalho pra `/orchestrator orchestrator-loop <pedido>`: força direto o modo de retry até passar, sem precisar escrever o argumento por extenso |
 
 ## Agents
 
@@ -74,7 +86,8 @@ A `description` do frontmatter é o único mecanismo de disparo: é o que fica s
 ```bash
 git clone https://github.com/veronezzi/claude-skills.git
 cp -r claude-skills/skills/<nome> .claude/skills/
-cp -r claude-skills/agents/<nome>.md .claude/agents/   # se a skill usar subagentes
+cp -r claude-skills/agents/<nome>.md .claude/agents/     # se a skill usar subagentes
+cp -r claude-skills/commands/<nome>.md .claude/commands/ # se quiser o atalho de slash command
 ```
 
 **Claude.ai**: instale o arquivo `.skill` empacotado pelas configurações de skills.
