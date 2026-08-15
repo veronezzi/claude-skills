@@ -10,6 +10,19 @@ Mantido por **Guilherme** ([@SEU_USUARIO](https://github.com/SEU_USUARIO)).
 |---|---|
 | [`loltracker-conventions`](skills/loltracker-conventions/) | Convenções e limites pedagógicos do rift-tracker: proíbe Jetpack Compose e impede o Claude de implementar features pelo Pedro |
 | [`apple-design`](skills/apple-design/) | Abordagem da Apple pra motion fluido e design de interface (gestos, springs, materiais translúcidos, tipografia), traduzida pra web — importado de [emilkowalski/skills](https://github.com/emilkowalski/skills/blob/main/skills/apple-design/SKILL.md) |
+| [`orchestrator`](skills/orchestrator/) | `/orchestrate` — roteia um pedido multi-etapa pros subagentes especializados certos (roster em [`agents/`](agents/)), com roteamento determinístico por palavra-chave, fan-out paralelo pra etapas independentes e log de decisão. Design e plano completos em [`references/`](skills/orchestrator/references/) |
+
+## Agents
+
+`agents/` guarda subagentes especializados (`.claude/agents/*.md`) que a skill `orchestrator` despacha via Agent tool — cada um com responsabilidade e tools restritas a um domínio.
+
+| Agent | Responsabilidade | Tools |
+|---|---|---|
+| [`android-architect`](agents/android-architect.md) | Revisão de Clean Architecture + MVVM/MVI | somente leitura |
+| [`android-build`](agents/android-build.md) | Diagnóstico e correção de Gradle/build | leitura + escrita |
+| [`android-debugger`](agents/android-debugger.md) | Investigação e correção de crashes/ANRs | leitura + escrita |
+| [`android-compose`](agents/android-compose.md) | Revisão e correção de UI Jetpack Compose | leitura + escrita |
+| [`android-tester`](agents/android-tester.md) | Avaliação de cobertura de testes | somente leitura |
 
 ## Prompts
 
@@ -38,6 +51,7 @@ A `description` do frontmatter é o **único** mecanismo de disparo — é o que
 ```bash
 git clone https://github.com/SEU_USUARIO/claude-skills.git
 cp -r claude-skills/skills/<nome> .claude/skills/
+cp -r claude-skills/agents/<nome>.md .claude/agents/   # se a skill usar subagentes
 ```
 
 **Claude.ai** — instale o arquivo `.skill` empacotado pelas configurações de skills.
