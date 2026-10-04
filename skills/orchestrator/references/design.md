@@ -1,11 +1,11 @@
-# Orquestrador de agentes (`/orchestrate`) — design
+# Orquestrador de agentes (`/orchestrator`) — design
 
 Data: 2026-08-14
 Status: aprovado, pronto para plano de implementação
 
 ## Objetivo
 
-Uma skill global, ativada por `/orchestrate`, que coordena múltiplos subagentes do
+Uma skill global, ativada por `/orchestrator`, que coordena múltiplos subagentes do
 Claude Code (Agent tool) para tarefas que cruzam responsabilidades diferentes,
 selecionando automaticamente o melhor agente para cada etapa e evitando que o
 contexto da thread principal fique cheio.
@@ -30,7 +30,7 @@ Shelf).
 ## Arquitetura
 
 ```
-usuário → /orchestrate <pedido>
+usuário → /orchestrator <pedido>
               │
               ▼
       [orquestrador = thread principal]

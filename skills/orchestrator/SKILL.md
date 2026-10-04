@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: Coordinates multiple Claude Code subagents for requests that span more than one responsibility (e.g. "revisa a arquitetura e depois corrige o build"). Routes each step to the best-fit specialist agent automatically, using a deterministic keyword match first and LLM judgment as fallback, dispatches independent steps in parallel, and keeps the main thread's context small by delegating heavy work. Has an "orchestrator-loop" option (`/orchestrator orchestrator-loop <pedido>`) that keeps re-attempting a step against a verification command until it passes, with a capped iteration count, also auto-triggered by phrases like "roda até funcionar"/"insiste até passar". Use when the user invokes /orchestrate, or explicitly asks to "orquestrar", "coordenar múltiplos agentes", or run a multi-step cross-responsibility task.
+description: Coordinates multiple Claude Code subagents for requests that span more than one responsibility (e.g. "revisa a arquitetura e depois corrige o build"). Routes each step to the best-fit specialist agent automatically, using a deterministic keyword match first and LLM judgment as fallback, dispatches independent steps in parallel, and keeps the main thread's context small by delegating heavy work. Has an "orchestrator-loop" option (`/orchestrator orchestrator-loop <pedido>`) that keeps re-attempting a step against a verification command until it passes, with a capped iteration count, also auto-triggered by phrases like "roda até funcionar"/"insiste até passar". Use when the user invokes /orchestrator, or explicitly asks to "orquestrar", "coordenar múltiplos agentes", or run a multi-step cross-responsibility task.
 ---
 
 # Orchestrator
@@ -34,7 +34,7 @@ keyword matches.
 
 ## Process
 
-1. **Break down.** Use `TaskCreate` to turn the user's `/orchestrate` request
+1. **Break down.** Use `TaskCreate` to turn the user's `/orchestrator` request
    into a short list of high-level steps. Keep each step scoped to one
    responsibility from the roster. If the first argument is
    `orchestrator-loop`, strip it from the request text and mark every step

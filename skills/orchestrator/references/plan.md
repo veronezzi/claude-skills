@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a global `/orchestrate` skill that routes multi-step requests to the right specialist subagent automatically, keeping the main thread's context small by delegating heavy work.
+**Goal:** Build a global `/orchestrator` skill that routes multi-step requests to the right specialist subagent automatically, keeping the main thread's context small by delegating heavy work.
 
 **Architecture:** One skill (`orchestrator`) holds the router/handoff logic and the agent roster table. Five new custom subagents (converted from the existing loose `.md` prompt files) give the roster real Android-specific specialists; everything else in the roster reuses subagents that already exist. No new code, no new dependencies — this is entirely markdown/frontmatter authoring plus manual verification.
 
@@ -241,7 +241,7 @@ No git repo here — skip. Move to Task 6.
 
 **Interfaces:**
 - Consumes: the five agents from Tasks 1–5 (`android-architect`, `android-build`, `android-debugger`, `android-compose`, `android-tester`), plus the pre-existing `Explore`, `Plan`, `general-purpose`, `pr-review-toolkit:code-reviewer`, `pr-review-toolkit:code-simplifier`, `pr-review-toolkit:silent-failure-hunter`, `pr-review-toolkit:pr-test-analyzer`.
-- Produces: the `/orchestrate` slash command, invokable by the user.
+- Produces: the `/orchestrator` slash command, invokable by the user.
 
 - [ ] **Step 1: Write the skill file**
 
@@ -250,7 +250,7 @@ Create `C:\Users\guigu\.claude\skills\orchestrator\SKILL.md`:
 ```markdown
 ---
 name: orchestrator
-description: Coordinates multiple Claude Code subagents for requests that span more than one responsibility (e.g. "revisa a arquitetura e depois corrige o build"). Routes each step to the best-fit specialist agent automatically, using a deterministic keyword match first and LLM judgment as fallback, dispatches independent steps in parallel, and keeps the main thread's context small by delegating heavy work. Use when the user invokes /orchestrate, or explicitly asks to "orquestrar", "coordenar múltiplos agentes", or run a multi-step cross-responsibility task.
+description: Coordinates multiple Claude Code subagents for requests that span more than one responsibility (e.g. "revisa a arquitetura e depois corrige o build"). Routes each step to the best-fit specialist agent automatically, using a deterministic keyword match first and LLM judgment as fallback, dispatches independent steps in parallel, and keeps the main thread's context small by delegating heavy work. Use when the user invokes /orchestrator, or explicitly asks to "orquestrar", "coordenar múltiplos agentes", or run a multi-step cross-responsibility task.
 ---
 
 # Orchestrator
@@ -284,7 +284,7 @@ keyword matches.
 
 ## Process
 
-1. **Break down.** Use `TaskCreate` to turn the user's `/orchestrate` request
+1. **Break down.** Use `TaskCreate` to turn the user's `/orchestrator` request
    into a short list of high-level steps. Keep each step scoped to one
    responsibility from the roster.
 2. **Route each step.** For the current step: try the keyword match against
@@ -369,13 +369,13 @@ No git repo here — skip.
 **Files:** none created — this task only exercises Tasks 1–6.
 
 **Interfaces:**
-- Consumes: the `/orchestrate` skill and all six new agent definitions.
+- Consumes: the `/orchestrator` skill and all six new agent definitions.
 
 - [ ] **Step 1: Run a two-responsibility request**
 
 In a Claude Code session (any project, since this is global), run:
 ```
-/orchestrate revisa a arquitetura do módulo X e depois verifica se o build.gradle tem alguma dependência quebrada
+/orchestrator revisa a arquitetura do módulo X e depois verifica se o build.gradle tem alguma dependência quebrada
 ```
 (swap in a real small project/module you have handy, or point it at
 RiftTracker's Android module).
@@ -398,7 +398,7 @@ agents' findings (not just one).
 
 Run:
 ```
-/orchestrate qual é a versão do Kotlin usada nesse projeto?
+/orchestrator qual é a versão do Kotlin usada nesse projeto?
 ```
 Confirm the orchestrator either answers inline (single file read, no
 roster match) or routes to `Explore` — it should not spin up multiple
