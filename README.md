@@ -21,6 +21,7 @@ Mantido por **Guilherme** ([@veronezzi](https://github.com/veronezzi)).
 | [`orchestrator`](skills/orchestrator/) | `/orchestrator`: roteia um pedido multi-etapa pros subagentes certos (roster em [`agents/`](agents/)), com roteamento determinístico por palavra-chave, fan-out paralelo pra etapas independentes, e log de decisão. Tem uma opção `orchestrator-loop` (`/orchestrator orchestrator-loop <pedido>`) que reexecuta uma etapa até passar num critério de sucesso, com teto de tentativas. Design e plano completos em [`references/`](skills/orchestrator/references/) |
 | [`apple-design`](skills/apple-design/) | Abordagem da Apple pra motion fluido e design de interface (gestos, springs, materiais translúcidos, tipografia), traduzida pra web. Importado de [emilkowalski/skills](https://github.com/emilkowalski/skills/blob/main/skills/apple-design/SKILL.md) |
 | [`loltracker-conventions`](skills/loltracker-conventions/) | Convenções e limites pedagógicos do rift-tracker: proíbe Jetpack Compose e impede o Claude de implementar features pelo Pedro |
+| [`curriculo-vagas`](skills/curriculo-vagas/) | Caça de vagas e otimização de currículo: entrevista o usuário, adapta o CV para uma vaga (ATS-friendly), gera DOCX/PDF, CV score 0-100, carta de apresentação, pesquisa de empresa, networking, prep de entrevista, mock, negociação salarial, tracker kanban, LinkedIn. Plataformas: LinkedIn, Indeed, Glassdoor, Gupy, Catho, Workday, Greenhouse, Lever, Ashby |
 
 ### Exemplo: `orchestrator-loop`
 
