@@ -142,8 +142,11 @@ Ver `references/career-stages.md`. Ajuste verbos, foco e extensão do CV:
 
 ## Scripts
 
-- `scripts/build_cv.py` — gera DOCX.
-- `scripts/ats_score.py` — score ATS por keyword match.
+- `scripts/build_cv.py` — gera DOCX do CV.
+- `scripts/cv_to_pdf.py` — converte DOCX em PDF (LibreOffice ou pandoc).
+- `scripts/build_letter.py` — gera DOCX da carta de apresentação.
+- `scripts/ats_score.py` — score ATS por keyword match (0-100).
+- `scripts/tracker.py` — CLI do application tracker (list/add/move/note).
 
 ## Observações
 
